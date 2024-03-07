@@ -18,6 +18,7 @@ def generate_random_string(string_length):
 if __name__ == '__main__':
     random_str = generate_random_string(10)
     while True:
-        print(random_str)
+        random_str = generate_random_string(10)
+        print(random_str, flush=True)
         time.sleep(5)
 
