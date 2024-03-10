@@ -1,6 +1,9 @@
-import time
+from flask import Flask, jsonify
 import string
 import random
+import datetime
+
+app = Flask(__name__)
 
 
 def generate_random_string(string_length):
@@ -15,10 +18,18 @@ def generate_random_string(string_length):
     return "".join([all_alphanum_chars[random.randint(0, len_alphanum_chars - 1)] for _ in range(string_length)])
 
 
-if __name__ == '__main__':
+@app.route('/')
+def show_timestamp():
+    """
+    Endpoint to show current timestamp
+    """
+    current_time = datetime.datetime.now()
     random_str = generate_random_string(10)
-    while True:
-        random_str = generate_random_string(10)
-        print(random_str, flush=True)
-        time.sleep(5)
+
+    return jsonify({'timestamp': current_time.isoformat(),
+                    'random_str': random_str})
+
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
 
