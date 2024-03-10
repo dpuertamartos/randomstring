@@ -14,7 +14,8 @@ spec:
     spec:
       volumes:
         - name: shared-txt
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: flask-app-string-generator-claim
       containers:
         - name: flask-app-string-generator
           image: dpuertamartos/flask-app-string-generator

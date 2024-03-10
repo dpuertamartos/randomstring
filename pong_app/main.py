@@ -13,6 +13,8 @@ class Counter:
 @app.route('/pingpong')
 def pingpong():
     count = Counter.increment()
+    with open("./files/counter.txt", "w") as f:
+        f.write(str(count))
     return jsonify({'counter': count})
 
 
