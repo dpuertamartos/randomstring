@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app-string-generator-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app-string-generator
+  template:
+    metadata:
+      labels:
+        app: flask-app-string-generator
+    spec:
+      volumes:
+        - name: shared-txt
+          emptyDir: {}
+      containers:
+        - name: flask-app-string-generator
+          image: dpuertamartos/flask-app-string-generator
+          volumeMounts:
+            - name: shared-txt
+              mountPath: /usr/src/app/files
+        - name: flask-app-timestamp-generator
+          image: dpuertamartos/flask-app-timestamp-generator
+          volumeMounts:
+            - name: shared-txt
+              mountPath: /usr/src/app/files
