@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: string-generator
+  name: flask-app-string-generator
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: string-generator
+      app: flask-app-string-generator
   template:
     metadata:
       labels:
-        app: string-generator
+        app: flask-app-string-generator
     spec:
       containers:
-        - name: string-generator
-          image: dpuertamartos/python-randomstring
+        - name: flask-app-string-generator
+          image: dpuertamartos/flask-app
