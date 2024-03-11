@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: string-ns
   name: flask-app-string-generator-dep
 spec:
   replicas: 1

@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  namespace: string-ns
   name: flask-app-string-generator-pv
 spec:
   storageClassName: manual
