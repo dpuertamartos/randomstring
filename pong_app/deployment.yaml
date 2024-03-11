@@ -12,13 +12,6 @@ spec:
       labels:
         app: flask-app-counter
     spec:
-      volumes:
-        - name: shared-txt
-          persistentVolumeClaim:
-            claimName: flask-app-string-generator-claim
       containers:
         - name: flask-app-counter
           image: dpuertamartos/flask-app-counter
-          volumeMounts:
-            - name: shared-txt
-              mountPath: /usr/src/app/files
