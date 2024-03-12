@@ -23,6 +23,12 @@ spec:
           volumeMounts:
             - name: shared-txt
               mountPath: /usr/src/app/files
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: example-configmap
+                  key: MESSAGE
         - name: flask-app-timestamp-generator
           image: dpuertamartos/flask-app-timestamp-generator
           volumeMounts:

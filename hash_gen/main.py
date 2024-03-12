@@ -3,6 +3,9 @@ from flask import Flask, jsonify
 import string
 import random
 import requests  # Import the requests library
+import os
+
+MESSAGE = os.getenv('MESSAGE', 'Default message if not provided')
 
 app = Flask(__name__)
 
@@ -40,7 +43,7 @@ def random_string():
     except Exception as e:
         print(f"Error obtaining counter: {e}")
 
-    return jsonify({'timestamp': timestamp, 'random_string': random_str, 'counter': counter})
+    return jsonify({'message': MESSAGE, 'timestamp': timestamp, 'random_string': random_str, 'counter': counter})
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
